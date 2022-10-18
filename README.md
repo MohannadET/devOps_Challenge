@@ -1,4 +1,4 @@
-# Demo URL: base_url = https://pu8ephrm66.execute-api.eu-central-1.amazonaws.com/api
+# Demo URL: ** You will get the latest url inside the latest Github Action within the Terraform Deploy Job *
 
 
 # Instructions:
@@ -55,8 +55,9 @@ base_url = "https://pu8ephrm66.execute-api.eu-central-1.amazonaws.com/api"
 ```
 
 9. After finishing the deployment created my own CI/CD using github actions
+10. Added my secrets 
+11. Ran github commit action to see everything working together
 
-10. 
 
 
 # Resources: https://registry.terraform.io/providers/hashicorp/aws/latest/docs
