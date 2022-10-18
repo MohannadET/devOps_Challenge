@@ -1,4 +1,9 @@
 terraform {
+  backend "s3" {
+    bucket = "challenge-terraform-state-1234-eg11"
+    key    = "default-infrastructure"
+    region = "eu-central-1"
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -16,6 +21,7 @@ variable "aws_region" {
 provider "aws" {
   region          = "${var.aws_region}"
 }
+
 
 data "archive_file" "lambda_zip" {
     type          = "zip"
