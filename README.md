@@ -1,3 +1,8 @@
+# Demo URL: base_url = https://pu8ephrm66.execute-api.eu-central-1.amazonaws.com/api
+
+
+# Instructions:
+
 1. Generated API access keys for my account.
 2. Created credentials file in the ~/.aws/ directory to configure AWS CLI.
 3. Add account profiles to ~/.aws/credentials: Ex. 
@@ -49,3 +54,9 @@ base_url = "https://pu8ephrm66.execute-api.eu-central-1.amazonaws.com/api"
 
 ```
 
+9. After finishing the deployment created my own CI/CD using github actions
+
+10. 
+
+
+# Resources: https://registry.terraform.io/providers/hashicorp/aws/latest/docs
