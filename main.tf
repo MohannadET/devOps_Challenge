@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "challenge-terraform-state-1234-eg11"
+    bucket = "challenge-terraform-state-1234-eg"
     key    = "default-infrastructure"
     region = "eu-central-1"
   }
