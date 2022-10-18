@@ -24,7 +24,7 @@ jobs:
       shell: bash
       
     - name: Terraform Destroy
-      run: terraform destroy 
+      run: terraform destroy -auto-approve -input=false
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # This doesn't have to be a secret. Client IDs are not sensitive.
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -39,7 +39,7 @@ jobs:
       
       
     - name: Terraform Deploy
-      run: terraform deploy
+      run: terraform deploy -auto-approve -input=false
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # This doesn't have to be a secret. Client IDs are not sensitive.
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
