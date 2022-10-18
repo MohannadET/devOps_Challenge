@@ -15,14 +15,7 @@ jobs:
       
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v2
-        
-    - name: Terraform Destroy
-      run: terraform destroy -auto-approve -input=false
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # This doesn't have to be a secret. Client IDs are not sensitive.
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      shell: bash
-        
+          
     - name: Terraform Init
       run: terraform init
       env:
@@ -30,6 +23,13 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       shell: bash
       
+    - name: Terraform Destroy
+      run: terraform destroy -auto-approve -input=false
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # This doesn't have to be a secret. Client IDs are not sensitive.
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      shell: bash
+        
     - name: Terraform Plan
       run: terraform plan -auto-approve -input=false
       env:
