@@ -1,0 +1,54 @@
+name: 'Terraform - Staging'
+
+on:
+  push:
+    branches:
+    - main
+jobs: 
+  terraform:
+    runs-on: ubuntu-latest
+    name: Terraform
+    environment: staging 
+    steps:
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: 1.1.9
+        terraform_wrapper: false
+        
+    - name: Terraform Destroy
+      id: destory
+      run: terraform destroy
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # This doesn't have to be a secret. Client IDs are not sensitive.
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      working-directory: ./ # Use your environment folder
+      shell: bash
+        
+    - name: Terraform Init
+      id: init
+      run: terraform init
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # This doesn't have to be a secret. Client IDs are not sensitive.
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      working-directory: ./ # Use your environment folder
+      shell: bash
+      
+    - name: Terraform Plan
+      id: plan
+      run: terraform plan show -no-color
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # This doesn't have to be a secret. Client IDs are not sensitive.
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      working-directory: ./ # Use your environment folder
+      shell: bash
+      
+      
+    - name: Terraform Deploy
+      id: deploy
+      run: terraform deploy
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # This doesn't have to be a secret. Client IDs are not sensitive.
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      working-directory: ./ # Use your environment folder
+      shell: bash
